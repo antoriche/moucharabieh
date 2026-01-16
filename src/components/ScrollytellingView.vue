@@ -51,6 +51,11 @@ const videoElement = ref(null)
 const contentContainer = ref(null)
 const visibleSections = reactive({})
 
+// Get reliable viewport height (accounts for iOS browser chrome)
+const getViewportHeight = () => {
+  return window.visualViewport?.height || window.innerHeight
+}
+
 // Content sections in French
 const sections = [
   {
@@ -101,7 +106,8 @@ const handleScroll = () => {
 
   const container = contentContainer.value
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-  const scrollHeight = container.scrollHeight - window.innerHeight
+  const viewportHeight = getViewportHeight()
+  const scrollHeight = container.scrollHeight - viewportHeight
   const scrollProgress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1)
 
   // Update video playback based on scroll
@@ -116,7 +122,7 @@ const handleScroll = () => {
 
   // Update section visibility based on viewport position
   const sectionElements = container.querySelectorAll('.content-section')
-  const viewportCenter = scrollTop + window.innerHeight / 2
+  const viewportCenter = scrollTop + viewportHeight / 2
 
   sectionElements.forEach((element, index) => {
     const rect = element.getBoundingClientRect()
@@ -126,7 +132,7 @@ const handleScroll = () => {
 
     // Section is visible when its center is near viewport center
     const distanceFromCenter = Math.abs(viewportCenter - elementCenter)
-    const threshold = window.innerHeight * 0.4
+    const threshold = viewportHeight * 0.4
 
     visibleSections[index] = distanceFromCenter < threshold
   })
@@ -163,6 +169,11 @@ onUnmounted(() => {
 .scrollytelling-container {
   position: relative;
   width: 100%;
+  /* Ensure container covers safe areas on iOS */
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
 }
 
 /* Fixed video background */
@@ -170,13 +181,16 @@ onUnmounted(() => {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
   z-index: -1;
   overflow: hidden;
 }
 
 .background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -187,8 +201,8 @@ onUnmounted(() => {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.3) 0%,
@@ -208,6 +222,7 @@ onUnmounted(() => {
 
 .content-section {
   min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for iOS */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -255,6 +270,7 @@ onUnmounted(() => {
 /* CTA Section */
 .cta-section {
   min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for iOS */
   display: flex;
   align-items: center;
   justify-content: center;
