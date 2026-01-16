@@ -35,9 +35,9 @@
       <!-- Final CTA section -->
       <section class="cta-section">
         <div class="cta-content">
-          <h2 class="cta-title">Contactez-nous</h2>
-          <p class="cta-text">Découvrez comment nos moucharabiehs peuvent transformer votre espace</p>
-          <a href="#contact" class="cta-button">Demander un devis</a>
+          <h2 class="cta-title">Créons Ensemble</h2>
+          <p class="cta-text">Parlez-nous de votre vision.</p>
+          <a href="mailto:contact@latelierdumoucharabieh.be" class="cta-button">Devis gratuit</a>
         </div>
       </section>
     </div>
@@ -56,36 +56,36 @@ const sections = [
   {
     title: "L'Art du Moucharabieh",
     paragraphs: [
-      "Depuis des siècles, le moucharabieh incarne l'excellence de l'artisanat traditionnel.",
-      "Un savoir-faire ancestral qui allie beauté, intimité et fonctionnalité."
+      "Imaginez un intérieur où chaque rayon de lumière devient une oeuvre d'art vivante.",
+      "Le moucharabieh n'est pas un simple élément décoratif — c'est une signature d'élégance, un héritage millénaire réservé autrefois aux palais et aux demeures d'exception."
     ]
   },
   {
-    title: "Tradition & Modernité",
+    title: "Un Savoir-Faire Rare",
     paragraphs: [
-      "Nos artisans perpétuent des techniques millénaires tout en s'adaptant aux exigences contemporaines.",
-      "Chaque pièce est unique, créée sur mesure pour votre projet."
+      "Nos maîtres artisans perpétuent des techniques ancestrales que seule une poignée d'ateliers dans le monde maîtrise encore.",
+      "Chaque pièce est sculptée sur mesure, unique comme votre vision."
     ]
   },
   {
-    title: "L'Excellence du Détail",
+    title: "Beauté & Intelligence",
     paragraphs: [
-      "Des motifs géométriques complexes sculptés avec précision.",
-      "Une attention méticuleuse portée à chaque élément de conception."
+      "Intimité préservée. Lumière sublimée. Température naturellement régulée.",
+      "Le moucharabieh conjugue esthétique exceptionnelle et fonctionnalité architecturale."
     ]
   },
   {
     title: "Lumière & Ombre",
     paragraphs: [
-      "Le moucharabieh joue avec la lumière naturelle pour créer des ambiances uniques.",
-      "Un jeu subtil d'ombres et de clarté qui évolue au fil de la journée."
+      "Regardez la lumière danser à travers les motifs géométriques millénaires.",
+      "Un spectacle vivant qui transforme votre espace au fil des heures, des saisons, des années."
     ]
   },
   {
-    title: "Votre Vision, Notre Expertise",
+    title: "Rejoignez l'Excellence",
     paragraphs: [
-      "Nous transformons vos idées en œuvres d'art fonctionnelles.",
-      "De la conception à l'installation, nous vous accompagnons à chaque étape."
+      "Hôtels de prestige, résidences privées, architectes visionnaires : ils nous ont fait confiance.",
+      "De la conception à l'installation, nous donnons vie à votre projet d'exception."
     ]
   }
 ]
@@ -262,9 +262,9 @@ onUnmounted(() => {
 }
 
 .cta-content {
-  max-width: 600px;
+  max-width: 500px;
   background: rgba(139, 69, 19, 0.95);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg);
   border-radius: 16px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
   text-align: center;
@@ -274,15 +274,15 @@ onUnmounted(() => {
 
 .cta-title {
   color: var(--color-text-light);
-  margin-bottom: var(--spacing-md);
-  font-size: var(--font-size-xxl);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-xl);
 }
 
 .cta-text {
   color: var(--color-text-light);
-  margin-bottom: var(--spacing-lg);
-  font-size: var(--font-size-lg);
-  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
 }
 
 .cta-button {
@@ -320,15 +320,15 @@ onUnmounted(() => {
   }
 
   .cta-content {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
   }
 
   .cta-title {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
   }
 
   .cta-text {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
   }
 }
 
